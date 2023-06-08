@@ -573,7 +573,7 @@ body.dark-theme {
     grid-template-columns: repeat(5, 1fr);
   }
   .footer__social {
-    align-items: flex-start;
+    align-items: center;
   }
   .footer__social-link {
     font-size: 1.45rem;

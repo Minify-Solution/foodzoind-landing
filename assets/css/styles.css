@@ -4,7 +4,7 @@
 :root {
   --header-height: 3rem;
   /*========== Colors ==========*/
-  --hue: 45;
+  --hue: 24;
   --sat: 98%;
   --first-color: hsl(var(--hue), var(--sat), 60%);
   --first-color-light: hsl(var(--hue), var(--sat), 85%);
@@ -198,6 +198,19 @@ body.dark-theme {
 .nav__link, .nav__logo, .nav__toggle {
   color: var(--title-color);
   font-weight: var(--font-semi-bold);
+}
+
+.nav__logo {
+  display: inline-flex;
+  align-items: center;
+  column-gap: .65rem;
+}
+
+.nav__logo-img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .nav__toggle {

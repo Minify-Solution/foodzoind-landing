@@ -1,90 +1,161 @@
-/*=============== SHOW MENU ===============*/
-const showMenu = (toggleId, navId) =>{
-    const toggle = document.getElementById(toggleId),
-    nav = document.getElementById(navId)
+document.addEventListener('DOMContentLoaded', () => {
     
-    // Validate that variables exist
-    if(toggle && nav){
-        toggle.addEventListener('click', ()=>{
-            // We add the show-menu class to the div tag with the nav__menu class
-            nav.classList.toggle('show-menu')
-        })
+    /* =========================================
+       Number Counter Animation
+       ========================================= */
+    const statsSection = document.getElementById('stats');
+    const counters = document.querySelectorAll('.counter, .counter-float');
+    let animated = false;
+
+    const animateCounters = () => {
+        counters.forEach(counter => {
+            const target = parseFloat(counter.getAttribute('data-target'));
+            const duration = 2000; // 2 seconds
+            const isFloat = counter.classList.contains('counter-float');
+            const stepTime = Math.abs(Math.floor(duration / (isFloat ? target * 10 : target)));
+            
+            let current = 0;
+            const increment = isFloat ? 0.1 : Math.ceil(target / 100);
+
+            const timer = setInterval(() => {
+                current += increment;
+                
+                if (current >= target) {
+                    counter.innerText = isFloat ? target.toFixed(1) : target.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    counter.innerText = isFloat ? current.toFixed(1) : Math.floor(current).toLocaleString();
+                }
+            }, stepTime);
+        });
+    };
+
+    // Intersection Observer to trigger animation when scrolled into view
+    if (statsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            const [entry] = entries;
+            if (entry.isIntersecting && !animated) {
+                animateCounters();
+                animated = true;
+            }
+        }, { threshold: 0.5 });
+
+        observer.observe(statsSection);
     }
-}
-showMenu('nav-toggle','nav-menu')
 
-/*=============== REMOVE MENU MOBILE ===============*/
-const navLink = document.querySelectorAll('.nav__link')
+    /* =========================================
+       App Showcase Carousel
+       ========================================= */
+    const track = document.getElementById('carouselTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    if (track && prevBtn && nextBtn) {
+        let currentIndex = 0;
+        const slides = track.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+        // Slide width (280px) + Gap (40px) as defined in CSS
+        const slideWidth = 320; 
 
-function linkAction(){
-    const navMenu = document.getElementById('nav-menu')
-    // When we click on each nav__link, we remove the show-menu class
-    navMenu.classList.remove('show-menu')
-}
-navLink.forEach(n => n.addEventListener('click', linkAction))
+        const updateCarousel = () => {
+            track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        };
 
-/*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
-const sections = document.querySelectorAll('section[id]')
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < totalSlides - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0; // Loop back to start
+            }
+            updateCarousel();
+        });
 
-function scrollActive(){
-    const scrollY = window.pageYOffset
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = totalSlides - 1; // Loop to end
+            }
+            updateCarousel();
+        });
+    }
 
-    sections.forEach(current =>{
-        const sectionHeight = current.offsetHeight,
-              sectionTop = current.offsetTop - 50,
-              sectionId = current.getAttribute('id')
+    /* =========================================
+       Analytics Event Tracking
+       ========================================= */
+    // Track App Downloads
+    const downloadLinks = document.querySelectorAll('.track-download');
+    downloadLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const platform = link.innerText.includes('App Store') ? 'iOS' : 'Android';
+            
+            // Push to GA4 DataLayer
+            if (window.dataLayer) {
+                window.dataLayer.push({
+                    'event': 'app_download_click',
+                    'platform': platform
+                });
+            }
+        });
+    });
 
-        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
-        }else{
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
-        }
-    })
-}
-window.addEventListener('scroll', scrollActive)
+    // Track Outbound Links (Socials, external pages)
+    const outboundLinks = document.querySelectorAll('.track-outbound');
+    outboundLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (window.dataLayer) {
+                window.dataLayer.push({
+                    'event': 'outbound_link_click',
+                    'url': link.href
+                });
+            }
+        });
+    });
+});
 
-/*=============== CHANGE BACKGROUND HEADER ===============*/
-function scrollHeader(){
-    const nav = document.getElementById('header')
-    // When the scroll is greater than 80 viewport height, add the scroll-header class to the header tag
-    if(this.scrollY >= 80) nav.classList.add('scroll-header'); else nav.classList.remove('scroll-header')
-}
-window.addEventListener('scroll', scrollHeader)
+/* =========================================
+       Analytics Event Tracking (GA4 + Meta Pixel)
+       ========================================= */
+    // Track App Downloads
+    const downloadLinks = document.querySelectorAll('.track-download');
+    downloadLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const platform = link.innerText.includes('App Store') ? 'iOS' : 'Android';
+            
+            // 1. Push to GA4 DataLayer
+            if (window.dataLayer) {
+                window.dataLayer.push({
+                    'event': 'app_download_click',
+                    'platform': platform
+                });
+            }
 
-/*=============== SHOW SCROLL UP ===============*/
-function scrollUp(){
-    const scrollUp = document.getElementById('scroll-up');
-    // When the scroll is higher than 560 viewport height, add the show-scroll class to the a tag with the scroll-top class
-    if(this.scrollY >= 560) scrollUp.classList.add('show-scroll'); else scrollUp.classList.remove('show-scroll')
-}
-window.addEventListener('scroll', scrollUp)
+            // 2. Push to Meta Pixel
+            if (typeof fbq === 'function') {
+                fbq('trackCustom', 'AppDownload', {
+                    platform: platform
+                });
+            }
+        });
+    });
 
-/*=============== DARK LIGHT THEME ===============*/
-const themeButton = document.getElementById('theme-button')
-const darkTheme = 'dark-theme'
-const iconTheme = 'bx-toggle-right'
+    // Track Outbound Links (Socials, Contact, etc.)
+    const outboundLinks = document.querySelectorAll('.track-outbound');
+    outboundLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // 1. Push to GA4 DataLayer
+            if (window.dataLayer) {
+                window.dataLayer.push({
+                    'event': 'outbound_link_click',
+                    'url': link.href
+                });
+            }
 
-// Previously selected topic (if user selected)
-const selectedTheme = localStorage.getItem('selected-theme')
-const selectedIcon = localStorage.getItem('selected-icon')
-
-// We obtain the current theme that the interface has by validating the dark-theme class
-const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
-const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-toggle-left' : 'bx-toggle-right'
-
-// We validate if the user previously chose a topic
-if (selectedTheme) {
-  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-  document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
-  themeButton.classList[selectedIcon === 'bx-toggle-left' ? 'add' : 'remove'](iconTheme)
-}
-
-// Activate / deactivate the theme manually with the button
-themeButton.addEventListener('click', () => {
-    // Add or remove the dark / icon theme
-    document.body.classList.toggle(darkTheme)
-    themeButton.classList.toggle(iconTheme)
-    // We save the theme and the current icon that the user chose
-    localStorage.setItem('selected-theme', getCurrentTheme())
-    localStorage.setItem('selected-icon', getCurrentIcon())
-})
+            // 2. Push to Meta Pixel
+            if (typeof fbq === 'function') {
+                fbq('trackCustom', 'OutboundLinkClick', {
+                    url: link.href
+                });
+            }
+        });
+    });

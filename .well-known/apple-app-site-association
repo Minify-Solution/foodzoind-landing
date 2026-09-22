@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appID": "STBW69BVM6.com.foodzoid.customerapp",
+        "paths": ["/vendor/*", "/restaurant/*", "/v/*"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.foodzoid.customerapp",
+      "sha256_cert_fingerprints": [
+        "F3:F3:2F:EC:F6:CF:1D:C1:6A:25:9B:2F:31:E4:94:76:A7:29:81:AD:A8:79:53:93:2E:64:E3:8A:48:D7:B0:BE",
+        "CF:08:B5:97:03:E2:29:CD:A4:0B:EC:B1:7E:12:93:90:96:3C:1C:30:EB:BA:50:3F:CC:E9:D3:29:18:64:65:97",
+        "21:5F:3A:F1:A3:38:A7:07:F2:66:06:30:27:7B:F5:8E:B4:AC:A5:9C:46:1D:5B:4C:2F:0D:63:1F:2C:8E:DA:7F",
+        "8B:D7:E4:2F:11:66:00:F2:4A:4A:0E:83:0A:88:6A:67:79:37:FE:80:50:DD:E4:B6:92:BF:F1:13:ED:5A:04:75",
+        "72:10:B4:E8:1F:23:50:E1:47:AD:C2:36:39:6B:A2:E5:E8:E2:98:83:D9:45:2D:2A:51:09:58:3C:00:78:55:68"
+      ]
+    }
+  }
+]

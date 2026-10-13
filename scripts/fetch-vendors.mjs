@@ -493,6 +493,7 @@ async function writeSitemap(restaurantUrls) {
     { loc: `${SITE_ORIGIN}/`, changefreq: 'weekly', priority: '1.0' },
     { loc: `${SITE_ORIGIN}/restaurants.html`, changefreq: 'daily', priority: '0.8' },
     { loc: `${SITE_ORIGIN}/partners.html`, changefreq: 'monthly', priority: '0.6' },
+    { loc: `${SITE_ORIGIN}/vendor-delete-account.html`, changefreq: 'yearly', priority: '0.3' },
     { loc: `${SITE_ORIGIN}/privacy-policy.html`, changefreq: 'yearly', priority: '0.5' },
     { loc: `${SITE_ORIGIN}/refund-policy.html`, changefreq: 'yearly', priority: '0.5' },
     { loc: `${SITE_ORIGIN}/cancellation-policy.html`, changefreq: 'yearly', priority: '0.5' },

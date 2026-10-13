@@ -6,9 +6,9 @@
  * writes assets/data/vendors.json. The live API is NEVER called from the
  * browser — the committed JSON is what the website reads.
  *
- * Env vars (optional, with sensible defaults):
- *   FOODZOID_API_BASE   base URL (default http://api.foodzoid.in:8080)
- *   FOODZOID_ADMIN_ID   value for the adminId header
+ * Env vars (optional):
+ *   FOODZOID_API_BASE      base URL (default http://api.foodzoid.in:8080)
+ *   FOODZOID_SITE_ORIGIN   public origin for canonical URLs (default https://foodzoid.in)
  *
  * Usage: node scripts/fetch-vendors.mjs
  */
@@ -18,7 +18,6 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const API_BASE = process.env.FOODZOID_API_BASE || 'http://api.foodzoid.in:8080';
-const ADMIN_ID = process.env.FOODZOID_ADMIN_ID || '6a63b24035ee8185c8caf3df';
 
 // Public site origin, used for canonical URLs and the sitemap.
 const SITE_ORIGIN = (process.env.FOODZOID_SITE_ORIGIN || 'https://foodzoid.in').replace(/\/$/, '');
@@ -41,7 +40,7 @@ async function apiFetch(path, { method = 'GET', headers = {} } = {}) {
   try {
     const res = await fetch(`${API_BASE}${path}`, {
       method,
-      headers: { adminId: ADMIN_ID, ...headers },
+      headers,
       signal: controller.signal,
     });
     if (!res.ok) {

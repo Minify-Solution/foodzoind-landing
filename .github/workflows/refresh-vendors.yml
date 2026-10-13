@@ -32,10 +32,8 @@ jobs:
 
       - name: Generate vendor snapshot
         env:
-          # Set these as repo secrets (Settings -> Secrets -> Actions).
-          # If unset, the script falls back to its built-in defaults.
+          # Optional override; defaults to the public API base in the script.
           FOODZOID_API_BASE: ${{ secrets.FOODZOID_API_BASE }}
-          FOODZOID_ADMIN_ID: ${{ secrets.FOODZOID_ADMIN_ID }}
         run: node scripts/fetch-vendors.mjs
 
       - name: Commit snapshot if changed

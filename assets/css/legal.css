@@ -1,0 +1,325 @@
+/* =========================================
+   Legal / Policy Pages
+   ========================================= */
+.legal-hero {
+    position: relative;
+    background: var(--primary-gradient);
+    color: var(--white);
+    padding: 70px 0 60px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.legal-hero h1 {
+    font-size: 2.8rem;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.legal-hero p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin: 0;
+}
+
+.legal-section {
+    padding: 60px 0 80px;
+}
+
+.legal-content {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    padding: 50px;
+}
+
+.legal-content .updated {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    background: rgba(242, 101, 34, 0.08);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.legal-content h2 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-top: 40px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(242, 101, 34, 0.15);
+}
+
+.legal-content h2:first-of-type {
+    margin-top: 0;
+}
+
+.legal-content h3 {
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+
+.legal-content p,
+.legal-content li {
+    color: var(--text-light);
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+.legal-content ul {
+    padding-left: 22px;
+    margin-bottom: 12px;
+}
+
+.legal-content li {
+    margin-bottom: 8px;
+}
+
+.legal-content a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.legal-content a:hover {
+    text-decoration: underline;
+}
+
+.legal-content strong {
+    color: var(--text-dark);
+}
+
+.legal-intro {
+    font-size: 1.05rem;
+}
+
+.legal-contact-box {
+    margin-top: 40px;
+    padding: 24px;
+    background: var(--bg-light);
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.legal-contact-box p {
+    margin-bottom: 6px;
+}
+
+/* Footer legal links */
+.footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    margin-top: 10px;
+}
+
+.footer-legal a {
+    color: #aaa;
+    transition: var(--transition);
+}
+
+.footer-legal a:hover {
+    color: var(--primary-color);
+}
+
+/* Back to home link in navbar */
+.nav-back {
+    font-weight: 500;
+    color: var(--text-dark);
+    transition: var(--transition);
+}
+
+.nav-back:hover {
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .legal-hero h1 {
+        font-size: 2rem;
+    }
+    .legal-content {
+        padding: 30px 22px;
+    }
+}
+
+/* Footer contact city labels */
+.contact-city {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin: 14px 0 6px;
+}
+
+.contact-city:first-of-type {
+    margin-top: 0;
+}
+
+/* =========================================
+   Partner Apps Page
+   ========================================= */
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.partner-card {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 40px 32px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.partner-card .partner-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 22px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.1rem;
+    color: var(--white);
+    background: var(--primary-gradient);
+}
+
+.partner-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.partner-card > p {
+    color: var(--text-light);
+    margin-bottom: 26px;
+    font-size: 0.98rem;
+}
+
+.partner-store-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+}
+
+.partner-store-buttons .store-btn {
+    width: 100%;
+    max-width: 240px;
+    justify-content: center;
+}
+
+/* Disabled "coming soon" store button */
+.store-btn.disabled {
+    position: relative;
+    background: #e9e9ee;
+    color: #9a9aa5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.store-btn.disabled .soon-tag {
+    position: absolute;
+    top: -10px;
+    right: -8px;
+    background: var(--primary-color);
+    color: var(--white);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 3px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   Restaurant SEO Page
+   ========================================= */
+.rest-card {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 18px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    padding: 40px 36px;
+    text-align: center;
+}
+
+.rest-logo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    display: block;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.rest-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 20px;
+    margin-bottom: 22px;
+}
+
+.rest-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.rest-stat i {
+    color: var(--primary-color);
+}
+
+.rest-stat.open {
+    color: #2ecc71;
+    font-weight: 600;
+}
+
+.rest-stat.closed {
+    color: #999;
+    font-weight: 600;
+}
+
+.rest-copy {
+    color: var(--text-light);
+    margin-bottom: 28px;
+    line-height: 1.7;
+}
+
+.rest-order {
+    display: inline-block;
+    margin-bottom: 28px;
+}
+
+.rest-order i {
+    margin-left: 8px;
+}
+
+.rest-store-buttons {
+    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+.rest-back {
+    margin: 0;
+    font-size: 0.92rem;
+}
+
+.rest-back a {
+    color: var(--primary-color);
+    font-weight: 600;
+}

@@ -36,16 +36,5 @@
             </div>
         </div>
     </section>
-    <script>
-        // On a device WITH the app, the OS intercepts /v/{slug} before this
-        // loads, so this page is only seen without the app. Try the deep link
-        // once in case of a soft-fail; if nothing happens, the message stays.
-        (function () {
-            var opened = false;
-            document.addEventListener('visibilitychange', function () { if (document.hidden) opened = true; });
-            try { window.location.href = "https://foodzoid.in/v/rath-samrat-kabab"; } catch (e) {}
-            setTimeout(function () { /* no-op: the download message is already shown */ }, 1500);
-        })();
-    </script>
 </body>
 </html>

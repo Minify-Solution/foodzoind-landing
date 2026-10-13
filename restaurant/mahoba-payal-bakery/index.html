@@ -81,8 +81,7 @@
                     Craving Payal Bakery? Order your favourite dishes
                     from Payal Bakery in Mahoba and get them delivered to your door with Foodzoid.
                 </p>
-                <a href="https://foodzoid.in/v/mahoba-payal-bakery" class="btn btn-primary rest-order track-outbound"
-                   data-deeplink="https://foodzoid.in/v/mahoba-payal-bakery" id="orderBtn">
+                <a href="https://foodzoid.in/v/mahoba-payal-bakery" class="btn btn-primary rest-order track-outbound">
                     Order on the Foodzoid app <i class="fas fa-arrow-right"></i>
                 </a>
                 <p class="rest-hint"><i class="fas fa-circle-info"></i> Don't have the Foodzoid app yet? Download it first using the buttons below.</p>
@@ -100,90 +99,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Download-app modal (shown when the app isn't installed) -->
-    <div class="app-modal" id="appModal" hidden>
-        <div class="app-modal-backdrop" data-close></div>
-        <div class="app-modal-box" role="dialog" aria-modal="true" aria-labelledby="appModalTitle">
-            <button class="app-modal-close" data-close aria-label="Close">&times;</button>
-            <img src="/assets/img/favicon.png" alt="Foodzoid" class="app-modal-logo">
-            <h3 id="appModalTitle">Download the Foodzoid app to order</h3>
-            <p>Payal Bakery is available on the Foodzoid app. Install it to place your order.</p>
-            <div class="store-buttons app-modal-stores">
-                <a href="https://apps.apple.com/in/app/foodzoid/id6757634594" class="store-btn track-download">
-                    <i class="fab fa-apple"></i>
-                    <div class="store-text"><span>Download on the</span><strong>App Store</strong></div>
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.foodzoid.customerapp&hl=en_IN" class="store-btn track-download">
-                    <i class="fab fa-google-play"></i>
-                    <div class="store-text"><span>GET IT ON</span><strong>Google Play</strong></div>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        (function () {
-            var btn = document.getElementById('orderBtn');
-            var modal = document.getElementById('appModal');
-            if (!btn || !modal) return;
-
-            var openModal = function () {
-                modal.hidden = false;
-                document.body.style.overflow = 'hidden';
-            };
-            var closeModal = function () {
-                modal.hidden = true;
-                document.body.style.overflow = '';
-            };
-            modal.querySelectorAll('[data-close]').forEach(function (el) {
-                el.addEventListener('click', closeModal);
-            });
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && !modal.hidden) closeModal();
-            });
-
-            var btnOriginalHtml = btn.innerHTML;
-            var setRedirecting = function () {
-                btn.classList.add('is-loading');
-                btn.setAttribute('aria-busy', 'true');
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting to the app…';
-            };
-            var resetButton = function () {
-                btn.classList.remove('is-loading');
-                btn.removeAttribute('aria-busy');
-                btn.innerHTML = btnOriginalHtml;
-            };
-
-            btn.addEventListener('click', function (e) {
-                e.preventDefault();
-                if (btn.classList.contains('is-loading')) return; // ignore double taps
-                var deeplink = btn.getAttribute('data-deeplink');
-                var left = false;
-                // When the app opens, the browser tab is backgrounded. Different
-                // browsers signal this differently, so listen for all of them.
-                var markLeft = function () { left = true; };
-                var onHide = function () { if (document.hidden) left = true; };
-                document.addEventListener('visibilitychange', onHide);
-                window.addEventListener('pagehide', markLeft);
-                window.addEventListener('blur', markLeft);
-                // Show a "Redirecting…" state so the user knows something is happening.
-                setRedirecting();
-                // Attempt to open the app via its deep link.
-                window.location.href = deeplink;
-                // If we're still here after a moment, the app isn't installed.
-                // Longer wait gives the OS time to switch to the app before we
-                // decide it's not installed and show the download modal.
-                setTimeout(function () {
-                    document.removeEventListener('visibilitychange', onHide);
-                    window.removeEventListener('pagehide', markLeft);
-                    window.removeEventListener('blur', markLeft);
-                    resetButton();
-                    if (!left && !document.hidden) openModal();
-                }, 3000);
-            });
-        })();
-    </script>
 
     <footer>
         <div class="container footer-grid">

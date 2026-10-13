@@ -95,16 +95,29 @@
     </section>
 
     <script>
-        // Tapping an in-page link to a verified App Link domain often does NOT
-        // trigger the app (browsers treat it as same-site navigation). Forcing a
-        // fresh top-level navigation on click behaves like opening the URL
-        // directly, which re-triggers the OS App Link / Universal Link handoff.
+        // Opening the app from an in-page tap:
+        //  - Android: use an intent:// URL. Chrome hands it to the OS, which
+        //    opens the app directly (with an automatic Play Store fallback).
+        //    A plain https in-page tap does NOT reliably trigger App Links.
+        //  - Other (iOS/desktop): fall back to the https deep link.
         (function () {
             var btn = document.getElementById('orderBtn');
             if (!btn) return;
+            var httpsUrl = btn.getAttribute('href');           // https://foodzoid.in/v/{slug}
+            var slugPath = httpsUrl.replace(/^https?:\/\//, ''); // foodzoid.in/v/{slug}
+            var playStore = 'https://play.google.com/store/apps/details?id=com.foodzoid.customerapp&hl=en_IN';
+            var isAndroid = /Android/i.test(navigator.userAgent);
+
             btn.addEventListener('click', function (e) {
                 e.preventDefault();
-                window.location.assign(btn.getAttribute('href'));
+                if (isAndroid) {
+                    var intentUrl = 'intent://' + slugPath + '#Intent;scheme=https;'
+                        + 'package=com.foodzoid.customerapp;'
+                        + 'S.browser_fallback_url=' + encodeURIComponent(playStore) + ';end';
+                    window.location.href = intentUrl;
+                } else {
+                    window.location.assign(httpsUrl);
+                }
             });
         })();
     </script>

@@ -81,7 +81,7 @@
                     Craving 1Rs Samose wali Dukan? Order your favourite dishes
                     from 1Rs Samose wali Dukan in Rath and get them delivered to your door with Foodzoid.
                 </p>
-                <a href="https://foodzoid.in/v/rath-1rs-samose-wali-dukan" class="btn btn-primary rest-order track-outbound">
+                <a href="https://foodzoid.in/v/rath-1rs-samose-wali-dukan" class="btn btn-primary rest-order track-outbound" id="orderBtn">
                     Order on the Foodzoid app <i class="fas fa-arrow-right"></i>
                 </a>
                 <p class="rest-hint"><i class="fas fa-circle-info"></i> Don't have the Foodzoid app yet? Download it first using the buttons below.</p>
@@ -99,6 +99,21 @@
             </div>
         </div>
     </section>
+
+    <script>
+        // Tapping an in-page link to a verified App Link domain often does NOT
+        // trigger the app (browsers treat it as same-site navigation). Forcing a
+        // fresh top-level navigation on click behaves like opening the URL
+        // directly, which re-triggers the OS App Link / Universal Link handoff.
+        (function () {
+            var btn = document.getElementById('orderBtn');
+            if (!btn) return;
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.location.assign(btn.getAttribute('href'));
+            });
+        })();
+    </script>
 
     <footer>
         <div class="container footer-grid">

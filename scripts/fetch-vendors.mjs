@@ -309,8 +309,21 @@ function renderVendorPage(v) {
                 if (e.key === 'Escape' && !modal.hidden) closeModal();
             });
 
+            var btnOriginalHtml = btn.innerHTML;
+            var setRedirecting = function () {
+                btn.classList.add('is-loading');
+                btn.setAttribute('aria-busy', 'true');
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting to the app…';
+            };
+            var resetButton = function () {
+                btn.classList.remove('is-loading');
+                btn.removeAttribute('aria-busy');
+                btn.innerHTML = btnOriginalHtml;
+            };
+
             btn.addEventListener('click', function (e) {
                 e.preventDefault();
+                if (btn.classList.contains('is-loading')) return; // ignore double taps
                 var deeplink = btn.getAttribute('data-deeplink');
                 var left = false;
                 // When the app opens, the browser tab is backgrounded. Different
@@ -320,6 +333,8 @@ function renderVendorPage(v) {
                 document.addEventListener('visibilitychange', onHide);
                 window.addEventListener('pagehide', markLeft);
                 window.addEventListener('blur', markLeft);
+                // Show a "Redirecting…" state so the user knows something is happening.
+                setRedirecting();
                 // Attempt to open the app via its deep link.
                 window.location.href = deeplink;
                 // If we're still here after a moment, the app isn't installed.
@@ -329,8 +344,9 @@ function renderVendorPage(v) {
                     document.removeEventListener('visibilitychange', onHide);
                     window.removeEventListener('pagehide', markLeft);
                     window.removeEventListener('blur', markLeft);
+                    resetButton();
                     if (!left && !document.hidden) openModal();
-                }, 2500);
+                }, 3000);
             });
         })();
     </script>

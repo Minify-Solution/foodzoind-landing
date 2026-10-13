@@ -308,6 +308,18 @@
     margin-left: 8px;
 }
 
+/* Loading / redirecting state for the Order button */
+.btn.is-loading {
+    opacity: 0.6;
+    cursor: default;
+    pointer-events: none;
+}
+
+.btn.is-loading i {
+    margin-left: 0;
+    margin-right: 8px;
+}
+
 .rest-store-buttons {
     justify-content: center;
     margin-top: 0;

@@ -248,7 +248,8 @@ function renderVendorPage(v) {
                     Craving ${escapeHtml(v.name)}? Order ${v.superMarket ? 'groceries and daily essentials' : 'your favourite dishes'}
                     from ${escapeHtml(v.name)}${city ? ` in ${escapeHtml(city)}` : ''} and get them delivered to your door with Foodzoid.
                 </p>
-                <a href="${escapeHtml(orderUrl)}" class="btn btn-primary rest-order track-outbound" target="_blank" rel="noopener">
+                <a href="${escapeHtml(orderUrl)}" class="btn btn-primary rest-order track-outbound"
+                   data-deeplink="${escapeHtml(orderUrl)}" id="orderBtn">
                     Order on the Foodzoid app <i class="fas fa-arrow-right"></i>
                 </a>
                 <div class="store-buttons rest-store-buttons">
@@ -265,6 +266,66 @@ function renderVendorPage(v) {
             </div>
         </div>
     </section>
+
+    <!-- Download-app modal (shown when the app isn't installed) -->
+    <div class="app-modal" id="appModal" hidden>
+        <div class="app-modal-backdrop" data-close></div>
+        <div class="app-modal-box" role="dialog" aria-modal="true" aria-labelledby="appModalTitle">
+            <button class="app-modal-close" data-close aria-label="Close">&times;</button>
+            <img src="/assets/img/favicon.png" alt="Foodzoid" class="app-modal-logo">
+            <h3 id="appModalTitle">Download the Foodzoid app to order</h3>
+            <p>${escapeHtml(v.name)} is available on the Foodzoid app. Install it to place your order.</p>
+            <div class="store-buttons app-modal-stores">
+                <a href="https://apps.apple.com/in/app/foodzoid/id6757634594" class="store-btn track-download">
+                    <i class="fab fa-apple"></i>
+                    <div class="store-text"><span>Download on the</span><strong>App Store</strong></div>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.foodzoid.customerapp&hl=en_IN" class="store-btn track-download">
+                    <i class="fab fa-google-play"></i>
+                    <div class="store-text"><span>GET IT ON</span><strong>Google Play</strong></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var btn = document.getElementById('orderBtn');
+            var modal = document.getElementById('appModal');
+            if (!btn || !modal) return;
+
+            var openModal = function () {
+                modal.hidden = false;
+                document.body.style.overflow = 'hidden';
+            };
+            var closeModal = function () {
+                modal.hidden = true;
+                document.body.style.overflow = '';
+            };
+            modal.querySelectorAll('[data-close]').forEach(function (el) {
+                el.addEventListener('click', closeModal);
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && !modal.hidden) closeModal();
+            });
+
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                var deeplink = btn.getAttribute('data-deeplink');
+                var left = false;
+                // If the app opens, the page is backgrounded -> visibility hidden.
+                var onHide = function () { if (document.hidden) left = true; };
+                document.addEventListener('visibilitychange', onHide);
+                // Attempt to open the app via its deep link.
+                window.location.href = deeplink;
+                // If we're still here after a moment, the app isn't installed.
+                setTimeout(function () {
+                    document.removeEventListener('visibilitychange', onHide);
+                    if (!left && !document.hidden) openModal();
+                }, 1200);
+            });
+        })();
+    </script>
 
     <footer>
         <div class="container footer-grid">
@@ -312,35 +373,58 @@ function renderVendorPage(v) {
  * want /v/{slug} competing in search.
  */
 function renderDeepLinkFallback(v) {
-  const target = `${SITE_ORIGIN}/restaurant/${v.slug}/`;
+  const restUrl = `${SITE_ORIGIN}/restaurant/${v.slug}/`;
+  const appStore = 'https://apps.apple.com/in/app/foodzoid/id6757634594';
+  const playStore = 'https://play.google.com/store/apps/details?id=com.foodzoid.customerapp&hl=en_IN';
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, follow">
-    <title>Opening ${escapeHtml(v.name)} on Foodzoid…</title>
-    <link rel="canonical" href="${target}">
-    <meta http-equiv="refresh" content="0; url=${target}">
+    <title>Download the Foodzoid app to order ${escapeHtml(v.name)}</title>
+    <link rel="canonical" href="${restUrl}">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
-    <style>
-        body{font-family:system-ui,'Segoe UI',sans-serif;background:#f9f9fc;color:#333;
-             display:flex;min-height:100vh;margin:0;align-items:center;justify-content:center;text-align:center}
-        .box{padding:30px}
-        a{color:#f26522;font-weight:600}
-    </style>
-    <script>
-        // Redirect to the restaurant page (store buttons + menu info).
-        // If the app is installed, the OS already intercepted this URL and
-        // this script never runs.
-        window.location.replace(${JSON.stringify(target)});
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/legal.css">
 </head>
 <body>
-    <div class="box">
-        <p>Opening <strong>${escapeHtml(v.name)}</strong> on Foodzoid…</p>
-        <p>If nothing happens, <a href="${target}">tap here</a>.</p>
-    </div>
+    <section class="legal-section" style="min-height:100vh;display:flex;align-items:center">
+        <div class="container">
+            <div class="rest-card">
+                <img src="/assets/img/favicon.png" alt="Foodzoid" class="rest-logo">
+                <h1 style="font-size:1.5rem">Download the Foodzoid app to order</h1>
+                <p class="rest-copy">
+                    <strong>${escapeHtml(v.name)}</strong> is available on the Foodzoid app.
+                    Install the app to place your order, or view the details below.
+                </p>
+                <div class="store-buttons rest-store-buttons">
+                    <a href="${appStore}" class="store-btn track-download">
+                        <i class="fab fa-apple"></i>
+                        <div class="store-text"><span>Download on the</span><strong>App Store</strong></div>
+                    </a>
+                    <a href="${playStore}" class="store-btn track-download">
+                        <i class="fab fa-google-play"></i>
+                        <div class="store-text"><span>GET IT ON</span><strong>Google Play</strong></div>
+                    </a>
+                </div>
+                <p class="rest-back"><a href="${restUrl}">View ${escapeHtml(v.name)} details &rarr;</a></p>
+            </div>
+        </div>
+    </section>
+    <script>
+        // On a device WITH the app, the OS intercepts /v/{slug} before this
+        // loads, so this page is only seen without the app. Try the deep link
+        // once in case of a soft-fail; if nothing happens, the message stays.
+        (function () {
+            var opened = false;
+            document.addEventListener('visibilitychange', function () { if (document.hidden) opened = true; });
+            try { window.location.href = ${JSON.stringify(v.url || restUrl)}; } catch (e) {}
+            setTimeout(function () { /* no-op: the download message is already shown */ }, 1500);
+        })();
+    </script>
 </body>
 </html>
 `;

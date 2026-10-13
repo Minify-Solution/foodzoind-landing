@@ -9,6 +9,8 @@
  * Env vars (optional):
  *   FOODZOID_API_BASE      base URL (default http://api.foodzoid.in:8080)
  *   FOODZOID_SITE_ORIGIN   public origin for canonical URLs (default https://foodzoid.in)
+ *   FOODZOID_ADMIN_ID      sent as the adminId header when set (future-proofing;
+ *                          store as a GitHub secret, never commit it)
  *
  * Usage: node scripts/fetch-vendors.mjs
  */
@@ -18,6 +20,10 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const API_BASE = process.env.FOODZOID_API_BASE || 'http://api.foodzoid.in:8080';
+// Optional: the endpoints currently work without it, but the backend may
+// enforce an adminId header later (other APIs already do). Supplied via env /
+// GitHub secret, never hard-coded in the repo.
+const ADMIN_ID = process.env.FOODZOID_ADMIN_ID || '';
 
 // Public site origin, used for canonical URLs and the sitemap.
 const SITE_ORIGIN = (process.env.FOODZOID_SITE_ORIGIN || 'https://foodzoid.in').replace(/\/$/, '');
@@ -40,7 +46,7 @@ async function apiFetch(path, { method = 'GET', headers = {} } = {}) {
   try {
     const res = await fetch(`${API_BASE}${path}`, {
       method,
-      headers,
+      headers: { ...(ADMIN_ID ? { adminId: ADMIN_ID } : {}), ...headers },
       signal: controller.signal,
     });
     if (!res.ok) {

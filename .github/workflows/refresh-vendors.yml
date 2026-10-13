@@ -32,8 +32,11 @@ jobs:
 
       - name: Generate vendor snapshot
         env:
-          # Optional override; defaults to the public API base in the script.
+          # Optional overrides, set as repo secrets (Settings -> Secrets -> Actions).
+          # FOODZOID_ADMIN_ID is sent as the adminId header only if set — add it
+          # if/when the backend starts requiring it.
           FOODZOID_API_BASE: ${{ secrets.FOODZOID_API_BASE }}
+          FOODZOID_ADMIN_ID: ${{ secrets.FOODZOID_ADMIN_ID }}
         run: node scripts/fetch-vendors.mjs
 
       - name: Commit snapshot if changed

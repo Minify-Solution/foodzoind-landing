@@ -379,11 +379,12 @@ async function generateSeoPages(result) {
       await writeFile(resolve(restDir, 'index.html'), renderVendorPage(v), 'utf8');
       urls.push(`${SITE_ORIGIN}/restaurant/${v.slug}/`);
 
-      // Deep-link fallback: a FLAT file at /v/{slug} (no directory) so the exact
-      // no-slash app URL resolves without a 301 redirect. GitHub Pages serves
-      // extensionless files as text/html. A redirect here breaks App Links /
-      // Universal Links, which is why we avoid the /v/{slug}/index.html form.
-      await writeFile(resolve(DEEPLINK_DIR, v.slug), renderDeepLinkFallback(v), 'utf8');
+      // Deep-link fallback at /v/{slug}/ (directory form so GitHub Pages serves
+      // it as text/html; a flat extensionless file is served as
+      // application/octet-stream and downloads in the browser instead).
+      const vDir = resolve(DEEPLINK_DIR, v.slug);
+      await mkdir(vDir, { recursive: true });
+      await writeFile(resolve(vDir, 'index.html'), renderDeepLinkFallback(v), 'utf8');
       fallbacks++;
     }
   }

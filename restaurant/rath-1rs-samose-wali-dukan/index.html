@@ -146,16 +146,24 @@
                 e.preventDefault();
                 var deeplink = btn.getAttribute('data-deeplink');
                 var left = false;
-                // If the app opens, the page is backgrounded -> visibility hidden.
+                // When the app opens, the browser tab is backgrounded. Different
+                // browsers signal this differently, so listen for all of them.
+                var markLeft = function () { left = true; };
                 var onHide = function () { if (document.hidden) left = true; };
                 document.addEventListener('visibilitychange', onHide);
+                window.addEventListener('pagehide', markLeft);
+                window.addEventListener('blur', markLeft);
                 // Attempt to open the app via its deep link.
                 window.location.href = deeplink;
                 // If we're still here after a moment, the app isn't installed.
+                // Longer wait gives the OS time to switch to the app before we
+                // decide it's not installed and show the download modal.
                 setTimeout(function () {
                     document.removeEventListener('visibilitychange', onHide);
+                    window.removeEventListener('pagehide', markLeft);
+                    window.removeEventListener('blur', markLeft);
                     if (!left && !document.hidden) openModal();
-                }, 1200);
+                }, 2500);
             });
         })();
     </script>
@@ -169,7 +177,7 @@
             <div class="footer-contact">
                 <h3>Contact Us</h3>
                 <a href="tel:+918429974173" class="contact-link"><i class="fas fa-phone-alt"></i> +91 8429974173</a>
-                <a href="mailto:info@foodzoid.in" class="contact-link"><i class="fas fa-envelope"></i> info@foodzoid.in</a>
+                <a href="mailto:support@foodzoid.in" class="contact-link"><i class="fas fa-envelope"></i> support@foodzoid.in</a>
             </div>
             <div class="footer-social">
                 <h3>Company</h3>

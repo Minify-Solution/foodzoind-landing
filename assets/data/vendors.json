@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T18:36:10.788Z",
+  "generatedAt": "2026-10-13T18:42:07.686Z",
   "cities": [
     {
       "id": "6867f008b4c7e0271a77796e",
@@ -452,7 +452,7 @@
           "cityName": "Mahoba",
           "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1790791942656.webp",
           "avgRating": 5,
-          "totalRatings": 2,
+          "totalRatings": 3,
           "timeToDeliver": "25-27 mins",
           "openTime": "11:30",
           "closeTime": "23:00",

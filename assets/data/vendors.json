@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T11:37:51.994Z",
+  "generatedAt": "2026-11-26T11:22:54.490Z",
   "cities": [
     {
       "id": "6867f008b4c7e0271a77796e",
@@ -40,7 +40,7 @@
           "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1790793250016.webp",
           "avgRating": 4.4,
           "totalRatings": 5,
-          "timeToDeliver": "28-34 mins",
+          "timeToDeliver": "30-34 mins",
           "openTime": null,
           "closeTime": "22:00",
           "open": true,
@@ -63,32 +63,32 @@
           "url": "https://foodzoid.in/v/rath-rohit-mishthan-bhandar"
         },
         {
-          "name": "Maa Gauri Resort ",
-          "cityName": "Rath",
-          "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1793272019687.webp",
-          "avgRating": 4.2,
-          "totalRatings": 50,
-          "timeToDeliver": "31-35 mins",
-          "openTime": "10:00",
-          "closeTime": "23:00",
-          "open": true,
-          "superMarket": false,
-          "slug": "rath-maa-gauri-resort",
-          "url": "https://foodzoid.in/v/rath-maa-gauri-resort"
-        },
-        {
           "name": "Pratha FastFood",
           "cityName": "Rath",
           "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1793291846492.webp",
-          "avgRating": 4.2,
-          "totalRatings": 74,
-          "timeToDeliver": "37-40 mins",
+          "avgRating": 4.3,
+          "totalRatings": 75,
+          "timeToDeliver": "36-40 mins",
           "openTime": null,
           "closeTime": "20:30",
           "open": true,
           "superMarket": false,
           "slug": "rath-pratha-fastfood",
           "url": "https://foodzoid.in/v/rath-pratha-fastfood"
+        },
+        {
+          "name": "Maa Gauri Resort ",
+          "cityName": "Rath",
+          "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1793272019687.webp",
+          "avgRating": 4.2,
+          "totalRatings": 51,
+          "timeToDeliver": "30-35 mins",
+          "openTime": "10:00",
+          "closeTime": "23:00",
+          "open": true,
+          "superMarket": false,
+          "slug": "rath-maa-gauri-resort",
+          "url": "https://foodzoid.in/v/rath-maa-gauri-resort"
         },
         {
           "name": "Chhotu Kabab Paratha And Veg Corner",
@@ -119,6 +119,20 @@
           "url": "https://foodzoid.in/v/rath-arvind-book-depot"
         },
         {
+          "name": "Samrat Kabab",
+          "cityName": "Rath",
+          "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1790794740897.webp",
+          "avgRating": 4.1,
+          "totalRatings": 30,
+          "timeToDeliver": "31-36 mins",
+          "openTime": "11:30",
+          "closeTime": "23:00",
+          "open": true,
+          "superMarket": false,
+          "slug": "rath-samrat-kabab",
+          "url": "https://foodzoid.in/v/rath-samrat-kabab"
+        },
+        {
           "name": "GAURI FAST FOOD",
           "cityName": "Rath",
           "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1790793963871.webp",
@@ -133,39 +147,11 @@
           "url": "https://foodzoid.in/v/rath-gauri-fast-food"
         },
         {
-          "name": "Samrat Kabab",
-          "cityName": "Rath",
-          "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1790794740897.webp",
-          "avgRating": 4,
-          "totalRatings": 29,
-          "timeToDeliver": "32-36 mins",
-          "openTime": "11:30",
-          "closeTime": "23:00",
-          "open": true,
-          "superMarket": false,
-          "slug": "rath-samrat-kabab",
-          "url": "https://foodzoid.in/v/rath-samrat-kabab"
-        },
-        {
-          "name": "Crown Bakers ",
-          "cityName": "Rath",
-          "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1793291264136.webp",
-          "avgRating": 3.9,
-          "totalRatings": 85,
-          "timeToDeliver": "30-36 mins",
-          "openTime": null,
-          "closeTime": "22:00",
-          "open": true,
-          "superMarket": false,
-          "slug": "rath-crown-bakers",
-          "url": "https://foodzoid.in/v/rath-crown-bakers"
-        },
-        {
           "name": "South Indian ",
           "cityName": "Rath",
           "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1790793807305.webp",
-          "avgRating": 3.9,
-          "totalRatings": 14,
+          "avgRating": 4,
+          "totalRatings": 15,
           "timeToDeliver": "25-30 mins",
           "openTime": null,
           "closeTime": "22:00",
@@ -173,6 +159,20 @@
           "superMarket": false,
           "slug": "rath-south-indian",
           "url": "https://foodzoid.in/v/rath-south-indian"
+        },
+        {
+          "name": "Crown Bakers ",
+          "cityName": "Rath",
+          "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1793291264136.webp",
+          "avgRating": 3.9,
+          "totalRatings": 86,
+          "timeToDeliver": "30-36 mins",
+          "openTime": null,
+          "closeTime": "22:00",
+          "open": true,
+          "superMarket": false,
+          "slug": "rath-crown-bakers",
+          "url": "https://foodzoid.in/v/rath-crown-bakers"
         },
         {
           "name": "Bikaner Misthan Bhandar",
@@ -193,8 +193,8 @@
           "cityName": "Rath",
           "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1793271443375.webp",
           "avgRating": 3.8,
-          "totalRatings": 73,
-          "timeToDeliver": "34-39 mins",
+          "totalRatings": 74,
+          "timeToDeliver": "36-40 mins",
           "openTime": null,
           "closeTime": "23:00",
           "open": true,
@@ -207,8 +207,8 @@
           "cityName": "Rath",
           "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1790794483087.webp",
           "avgRating": 3.8,
-          "totalRatings": 45,
-          "timeToDeliver": "28-33 mins",
+          "totalRatings": 46,
+          "timeToDeliver": "28-34 mins",
           "openTime": null,
           "closeTime": "23:00",
           "open": true,
@@ -222,7 +222,7 @@
           "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1793336167721.webp",
           "avgRating": 3.7,
           "totalRatings": 6,
-          "timeToDeliver": "27-32 mins",
+          "timeToDeliver": "26-32 mins",
           "openTime": "10:00",
           "closeTime": "21:30",
           "open": true,
@@ -235,8 +235,8 @@
           "cityName": "Rath",
           "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1793291444645.webp",
           "avgRating": 3.6,
-          "totalRatings": 66,
-          "timeToDeliver": "31-34 mins",
+          "totalRatings": 67,
+          "timeToDeliver": "28-33 mins",
           "openTime": "10:00",
           "closeTime": "23:00",
           "open": true,
@@ -250,7 +250,7 @@
           "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1791357226657.webp",
           "avgRating": 3.4,
           "totalRatings": 14,
-          "timeToDeliver": "31-35 mins",
+          "timeToDeliver": "33-36 mins",
           "openTime": null,
           "closeTime": "22:00",
           "open": true,
@@ -259,14 +259,28 @@
           "url": "https://foodzoid.in/v/rath-mushkan-chiken-biryani"
         },
         {
+          "name": "Chin Tapak Dam Dam",
+          "cityName": "Rath",
+          "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1790794132238.webp",
+          "avgRating": 3.3,
+          "totalRatings": 46,
+          "timeToDeliver": "40-42 mins",
+          "openTime": null,
+          "closeTime": "22:00",
+          "open": true,
+          "superMarket": false,
+          "slug": "rath-chin-tapak-dam-dam",
+          "url": "https://foodzoid.in/v/rath-chin-tapak-dam-dam"
+        },
+        {
           "name": "FOOD HUB CAFE",
           "cityName": "Rath",
-          "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1795167575852.webp",
+          "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1795670059170.webp",
           "avgRating": 1,
           "totalRatings": 2,
-          "timeToDeliver": "45-47 mins",
-          "openTime": null,
-          "closeTime": null,
+          "timeToDeliver": "40-43 mins",
+          "openTime": "10:00",
+          "closeTime": "22:30",
           "open": true,
           "superMarket": false,
           "slug": "rath-food-hub-cafe",
@@ -341,20 +355,6 @@
           "superMarket": false,
           "slug": "rath-krishna-fast-food",
           "url": "https://foodzoid.in/v/rath-krishna-fast-food"
-        },
-        {
-          "name": "Chin Tapak Dam Dam",
-          "cityName": "Rath",
-          "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1790794132238.webp",
-          "avgRating": 3.3,
-          "totalRatings": 46,
-          "timeToDeliver": "38-43 mins",
-          "openTime": null,
-          "closeTime": "22:00",
-          "open": false,
-          "superMarket": false,
-          "slug": "rath-chin-tapak-dam-dam",
-          "url": "https://foodzoid.in/v/rath-chin-tapak-dam-dam"
         },
         {
           "name": "Sabka Resort",
@@ -490,25 +490,11 @@
           "url": "https://foodzoid.in/v/mahoba-al-hira-dastar-khan"
         },
         {
-          "name": "HOTEL HUNDRED PALMS",
-          "cityName": "Mahoba",
-          "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1791481120036.webp",
-          "avgRating": 5,
-          "totalRatings": 1,
-          "timeToDeliver": "40-45 mins",
-          "openTime": null,
-          "closeTime": null,
-          "open": true,
-          "superMarket": false,
-          "slug": "mahoba-hotel-hundred-palms",
-          "url": "https://foodzoid.in/v/mahoba-hotel-hundred-palms"
-        },
-        {
           "name": "LAB E ZAYQA (Cloud Kitchen)",
           "cityName": "Mahoba",
           "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1793892176776.webp",
-          "avgRating": 4.7,
-          "totalRatings": 7,
+          "avgRating": 4.8,
+          "totalRatings": 8,
           "timeToDeliver": "28-32 mins",
           "openTime": "11:59",
           "closeTime": "22:30",
@@ -516,6 +502,20 @@
           "superMarket": false,
           "slug": "mahoba-lab-e-zayqa",
           "url": "https://foodzoid.in/v/mahoba-lab-e-zayqa"
+        },
+        {
+          "name": "Momo Darbar",
+          "cityName": "Mahoba",
+          "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1790792577170.webp",
+          "avgRating": 4.6,
+          "totalRatings": 7,
+          "timeToDeliver": "24-29 mins",
+          "openTime": "16:00",
+          "closeTime": "22:00",
+          "open": true,
+          "superMarket": false,
+          "slug": "mahoba-momo-darbar",
+          "url": "https://foodzoid.in/v/mahoba-momo-darbar"
         },
         {
           "name": "Agrasen Bhojnalaya",
@@ -530,6 +530,20 @@
           "superMarket": false,
           "slug": "mahoba-agrasen-bhojnalaya",
           "url": "https://foodzoid.in/v/mahoba-agrasen-bhojnalaya"
+        },
+        {
+          "name": "HOTEL HUNDRED PALMS",
+          "cityName": "Mahoba",
+          "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1791481120036.webp",
+          "avgRating": 4.5,
+          "totalRatings": 2,
+          "timeToDeliver": "40-45 mins",
+          "openTime": null,
+          "closeTime": null,
+          "open": true,
+          "superMarket": false,
+          "slug": "mahoba-hotel-hundred-palms",
+          "url": "https://foodzoid.in/v/mahoba-hotel-hundred-palms"
         },
         {
           "name": "Food Costa",
@@ -644,6 +658,20 @@
           "url": "https://foodzoid.in/v/mahoba-op-omelettes"
         },
         {
+          "name": "Baba Veg Dum Biryani",
+          "cityName": "Mahoba",
+          "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1792814487127.webp",
+          "avgRating": 0,
+          "totalRatings": 0,
+          "timeToDeliver": "34-39 mins",
+          "openTime": null,
+          "closeTime": null,
+          "open": true,
+          "superMarket": false,
+          "slug": "mahoba-baba-veg-dum-biryani",
+          "url": "https://foodzoid.in/v/mahoba-baba-veg-dum-biryani"
+        },
+        {
           "name": "Annapurna Tiffin Service",
           "cityName": "Mahoba",
           "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1792814378374.webp",
@@ -672,20 +700,6 @@
           "url": "https://foodzoid.in/v/mahoba-sahu-momo-cafe"
         },
         {
-          "name": "Momo Darbar",
-          "cityName": "Mahoba",
-          "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1790792577170.webp",
-          "avgRating": 4.8,
-          "totalRatings": 5,
-          "timeToDeliver": "26-28 mins",
-          "openTime": "16:00",
-          "closeTime": "22:00",
-          "open": false,
-          "superMarket": false,
-          "slug": "mahoba-momo-darbar",
-          "url": "https://foodzoid.in/v/mahoba-momo-darbar"
-        },
-        {
           "name": "sakshi",
           "cityName": "Mahoba",
           "logoUrl": "https://example.com/logo.png",
@@ -712,20 +726,6 @@
           "superMarket": false,
           "slug": "mahoba-bewafa-veg-biryani",
           "url": "https://foodzoid.in/v/mahoba-bewafa-veg-biryani"
-        },
-        {
-          "name": "Baba Veg Dum Biryani",
-          "cityName": "Mahoba",
-          "logoUrl": "https://foodzoid.s3.eu-north-1.amazonaws.com/image-1792814487127.webp",
-          "avgRating": 0,
-          "totalRatings": 0,
-          "timeToDeliver": "34-39 mins",
-          "openTime": null,
-          "closeTime": null,
-          "open": false,
-          "superMarket": false,
-          "slug": "mahoba-baba-veg-dum-biryani",
-          "url": "https://foodzoid.in/v/mahoba-baba-veg-dum-biryani"
         }
       ]
     }
